@@ -1,16 +1,20 @@
 import React, { Component } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import LeafletScreen from "./src/screens/leaflet";
 import HomeScreen from "./src/screens/home";
 import WebviewScreen from "./src/screens/webview";
 import { AppLoading } from "expo";
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
+import { NavigationContainer } from "@react-navigation/native";
+//import { createStackNavigator } from "@react-navigation/stack";
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-const Stack = createStackNavigator();
+const Stack = createDrawerNavigator();
 
 export default class App extends Component {
+	public state: any;
+	public setState: any;
+
   constructor(props) {
     super(props);
 
@@ -33,10 +37,10 @@ export default class App extends Component {
     }
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home" headerMode="none">
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Leaflet" component={LeafletScreen} />
-          <Stack.Screen name="WebviewScreen" component={WebviewScreen} />
+          <Stack.Screen name="Webview" component={WebviewScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     );
